@@ -1,4 +1,15 @@
-# WPDC - WordPress Docker Compose
+# OSP Website on steroids
+
+## How to use / TLDR:
+
+1. Copy wordpress files into `wp-app`
+1. Copy wordpress sql dump into `wp-data`
+1. `cp .env.example .env` and edit it 
+1. Start the project with `docker-compose up`
+
+Further instructions: 
+
+### WPDC - WordPress Docker Compose
 
 Easy WordPress development with Docker and Docker Compose.
 
@@ -15,7 +26,7 @@ Contents:
 - [Installation](#installation)
 - [Usage](#usage)
 
-## Requirements
+### Requirements
 
 Make sure you have the latest versions of **Docker** and **Docker Compose** installed on your machine.
 
@@ -23,11 +34,11 @@ Clone this repository or copy the files from this repository into a new folder. 
 
 Make sure to [add your user to the `docker` group](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user) when using Linux.
 
-## Configuration
+### Configuration
 
 Edit the `.env` file to change the default IP address, MySQL root password and WordPress database name.
 
-## Installation
+### Installation
 
 Open a terminal and `cd` to the folder in which `docker-compose.yml` is saved and run:
 
@@ -44,9 +55,9 @@ The containers are now built and running. You should be able to access the WordP
 
 For convenience you may add a new entry into your hosts file.
 
-## Usage
+### Usage
 
-### Starting containers
+#### Starting containers
 
 You can start the containers with the `up` command in daemon mode (by adding `-d` as an argument) or by using the `start` command:
 
@@ -54,13 +65,13 @@ You can start the containers with the `up` command in daemon mode (by adding `-d
 docker-compose start
 ```
 
-### Stopping containers
+#### Stopping containers
 
 ```
 docker-compose stop
 ```
 
-### Removing containers
+#### Removing containers
 
 To stop and remove all the containers use the`down` command:
 
@@ -74,7 +85,7 @@ Use `-v` if you need to remove the database volume which is used to persist the 
 docker-compose down -v
 ```
 
-### Project from existing source
+#### Project from existing source
 
 Copy the `docker-compose.yml` file into a new directory. In the directory you create two folders:
 
@@ -94,13 +105,13 @@ define('WP_HOME','http://wp-app.local');
 define('WP_SITEURL','http://wp-app.local');
 ```
 
-### Creating database dumps
+#### Creating database dumps
 
 ```
 ./export.sh
 ```
 
-### Developing a Theme
+#### Developing a Theme
 
 Configure the volume to load the theme in the container in the `docker-compose.yml`:
 
@@ -109,7 +120,7 @@ volumes:
   - ./theme-name/trunk/:/var/www/html/wp-content/themes/theme-name
 ```
 
-### Developing a Plugin
+#### Developing a Plugin
 
 Configure the volume to load the plugin in the container in the `docker-compose.yml`:
 
@@ -118,7 +129,7 @@ volumes:
   - ./plugin-name/trunk/:/var/www/html/wp-content/plugins/plugin-name
 ```
 
-### WP CLI
+#### WP CLI
 
 The docker compose configuration also provides a service for using the [WordPress CLI](https://developer.wordpress.org/cli/commands/).
 
@@ -146,7 +157,7 @@ This way you can use the CLI command above as follows:
 wp plugin list
 ```
 
-### phpMyAdmin
+#### phpMyAdmin
 
 You can also visit `http://127.0.0.1:8080` to access phpMyAdmin after starting the containers.
 
