@@ -1,3 +1,5 @@
 .env
 /wp-app/*
 /wp-data/*
+!/wp-app/.gitkeep
+!/wp-data/.gitkeep
